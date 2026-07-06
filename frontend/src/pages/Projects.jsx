@@ -4,19 +4,23 @@ import api from "../services/api";
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
-
+  
   useEffect(() => {
     loadProjects();
   }, []);
 
   const loadProjects = async () => {
-    try {
-      const res = await api.get("/projects");
-      setProjects(res.data);
-    } catch (error) {
-      console.error("Failed to load projects:", error);
-    }
-  };
+  try {
+    const res = await api.get("/projects");
+
+    console.log("API RESPONSE:", res.data);
+    console.log("IS ARRAY:", Array.isArray(res.data));
+
+    setProjects(res.data);
+  } catch (error) {
+    console.error("Failed to load projects:", error);
+  }
+};
 
   return (
     <section id="projects" className="py-20 bg-[#FAFAF8]">
