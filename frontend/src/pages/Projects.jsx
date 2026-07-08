@@ -1,33 +1,48 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { Link } from "react-router-dom";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
-  
+
   useEffect(() => {
     loadProjects();
   }, []);
 
   const loadProjects = async () => {
-  try {
-    const res = await api.get("/projects");
+    try {
+      const res = await api.get("/projects");
 
-    console.log("API RESPONSE:", res.data);
-    console.log("IS ARRAY:", Array.isArray(res.data));
+      console.log("API RESPONSE:", res.data);
+      console.log("IS ARRAY:", Array.isArray(res.data));
 
-    setProjects(res.data);
-  } catch (error) {
-    console.error("Failed to load projects:", error);
-  }
-};
+      setProjects(res.data);
+    } catch (error) {
+      console.error("Failed to load projects:", error);
+    }
+  };
 
   return (
     <section id="projects" className="py-20 bg-[#FAFAF8]">
       <div className="max-w-7xl mx-auto px-6">
-        <h1 className="text-5xl font-bold text-center mb-4">My Projects</h1>
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+  <div className="text-center md:text-left">
+    <h1 className="text-5xl font-bold mb-4">
+      My Projects
+    </h1>
 
-        <div className="w-24 h-1 bg-[#E6A100] mx-auto mb-12"></div>
+    <div className="w-24 h-1 bg-[#E6A100] mx-auto md:mx-0"></div>
+  </div>
+
+  <Link
+    to="/admin/projects"
+    className="mt-4 md:mt-0 bg-[#E6A100] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#cc8e00] transition"
+  >
+    Admin Dashboard
+  </Link>
+</div>
+
 
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-16">
           Here are some of the projects I have worked on during my studies and
@@ -90,16 +105,18 @@ export default function Projects() {
                   )}
 
                   <span
-  onClick={() => setSelectedProject(project)}
-  className="ml-auto text-[#E6A100] text-sm font-medium cursor-pointer hover:underline"
->
-  More →
-</span>
+                    onClick={() => setSelectedProject(project)}
+                    className="ml-auto text-[#E6A100] text-sm font-medium cursor-pointer hover:underline"
+                  >
+                    More →
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+</div>
       </div>
 
       {selectedProject && (
@@ -196,6 +213,7 @@ export default function Projects() {
           </div>
         </div>
       )}
+      
     </section>
   );
 }

@@ -35,24 +35,17 @@ export default function Home() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="/projects"
+                href="#projects"
                 className="bg-[#E6A100] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-[#CC9000] transition"
               >
                 View My Projects
               </a>
 
               <a
-                href="/contact"
+                href="#contact"
                 className="border-2 border-[#E6A100] text-[#E6A100] px-8 py-4 rounded-xl font-semibold hover:bg-[#E6A100] hover:text-white transition"
               >
                 Contact Me
-              </a>
-                            <a
-                href="/cv.pdf"
-                download
-                className="bg-[#E6A100] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-[#CC9000] transition"
-              >
-                Download CV
               </a>
             </div>
 
