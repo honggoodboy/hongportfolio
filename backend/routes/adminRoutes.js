@@ -3,6 +3,10 @@ import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
+router.get("/login", (req, res) => {
+  res.send("Admin Login API is working");
+});
+
 router.post("/login", (req, res) => {
   const { password } = req.body;
 
