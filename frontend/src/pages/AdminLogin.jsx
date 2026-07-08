@@ -21,9 +21,13 @@ export default function AdminLogin() {
 
       navigate("/admin/projects");
     } catch (error) {
-      alert("Invalid Password");
-    }
-  };
+  console.log(error.response?.data);
+  alert(
+    error.response?.data?.message ||
+    JSON.stringify(error.response?.data) ||
+    error.message
+  );
+}
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
