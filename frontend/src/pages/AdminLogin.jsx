@@ -10,9 +10,9 @@ export default function AdminLogin() {
     e.preventDefault();
 
     try {
-      const res = await api.post("/admin/login", {
-        password,
-      });
+      const res = await api.post("/hongpanel/login", {
+  password,
+});
 
       localStorage.setItem(
         "adminToken",
