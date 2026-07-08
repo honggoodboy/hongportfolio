@@ -15,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/admin", adminRoutes);
+app.use("/api/hongpanel", adminRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/projects", projectRoutes);
 
