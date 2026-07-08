@@ -21,14 +21,7 @@ export default function AdminLogin() {
 
       navigate("/admin/projects");
     } catch (error) {
-      console.log(error.response?.status);
-      console.log(error.response?.data);
-
-      alert(
-        error.response?.data?.message ||
-        JSON.stringify(error.response?.data) ||
-        error.message
-      );
+      alert("Invalid Password");
     }
   };
 
